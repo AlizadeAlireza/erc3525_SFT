@@ -1,34 +1,22 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.0;
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-contract Lock {
-    uint public unlockTime;
-    address payable public owner;
+import "@openzeppelin/contracts/utils/Strings.sol";
+import "@solvprotocol/erc-3525/ERC3525.sol";
 
-    event Withdrawal(uint amount, uint when);
+contract ERC3525GettingStarted is ERC3525 {
+    using Strings for uint256;
+    address public owner;
 
-    constructor(uint _unlockTime) payable {
-        require(
-            block.timestamp < _unlockTime,
-            "Unlock time should be in the future"
-        );
-
-        unlockTime = _unlockTime;
-        owner = payable(msg.sender);
+    constructor(address owner_) ERC3525("ERC3525GettingStarted", "ERC3525GS", 18) {
+        owner = owner_;
     }
 
-    function withdraw() public {
-        // Uncomment this line, and the import of "hardhat/console.sol", to print a log in your terminal
-        // console.log("Unlock time is %o and block timestamp is %o", unlockTime, block.timestamp);
-
-        require(block.timestamp >= unlockTime, "You can't withdraw yet");
-        require(msg.sender == owner, "You aren't the owner");
-
-        emit Withdrawal(address(this).balance, block.timestamp);
-
-        owner.transfer(address(this).balance);
+    function mint(address to_, uint256 slot_, uint256 amount_) external {
+        require(msg.sender == owner, "ERC3525GettingStarted: only owner can mint");
+        _mint(to_, slot_, amount_);
     }
 }
