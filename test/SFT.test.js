@@ -22,5 +22,8 @@ describe("SFT Contract", () => {
     })
     describe("constructor for after deploy contract", async () => {
         it("deployer is only owner", async () => {})
+        it("decimal accurancy", async () => {})
+        it("symbol accurancy", async () => {})
+        it("name accurancy", async () => {})
     })
 })
