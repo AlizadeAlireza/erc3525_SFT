@@ -25,49 +25,49 @@ const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL
 const MUMBAI_RPC_URL = process.env.MUMBAI_RPC_URL
 
 module.exports = {
-    defaultNetwork: "localhost",
-    networks: {
-        hardhat: {
-            chainId: 31337,
-            forking: {
-                url: MAINNET_RPC_URL,
-            },
-            allowUnlimitedContractSize: true,
-        },
-        localhost: {
-            url: RPC_URL,
-            chainid: 31337,
-            allowUnlimitedContractSize: true,
-            // gas: 2100000,
-            // gasPrice: 1315849061700,
-        },
-        // goerli: {
-        //     url: GOERLI_RPC_URL,
-        //     accounts: [PRIVATE_KEY],
-        //     chainId: 5,
-        //     blockConfirmations: 6,
-        //     saveDeployments: true,
-        //     allowUnlimitedContractSize: true,
-        // },
-        // sepolia: {
-        //     url: SEPOLIA_RPC_URL,
-        //     accounts: [PRIVATE_KEY],
-        //     saveDeployments: true,
-        //     chainId: 11155111,
-        //     blockConfirmations: 6,
-        //     allowUnlimitedContractSize: true,
-        // },
-        // mumbai: {
-        //     url: MUMBAI_RPC_URL,
-        //     accounts: [PRIVATE_KEY],
-        //     saveDeployments: true,
-        //     chainId: 80001,
-        //     gas: 2100000,
-        //     gasPrice: 8000000000,
-        //     blockConfirmations: 6,
-        //     allowUnlimitedContractSize: true,
-        // },
-    },
+    // defaultNetwork: "localhost",
+    // networks: {
+    //     hardhat: {
+    //         chainId: 31337,
+    //         forking: {
+    //             url: MAINNET_RPC_URL,
+    //         },
+    //         allowUnlimitedContractSize: true,
+    //     },
+    //     localhost: {
+    //         url: RPC_URL,
+    //         chainid: 31337,
+    //         allowUnlimitedContractSize: true,
+    //         // gas: 2100000,
+    //         // gasPrice: 1315849061700,
+    //     },
+    //     // goerli: {
+    //     //     url: GOERLI_RPC_URL,
+    //     //     accounts: [PRIVATE_KEY],
+    //     //     chainId: 5,
+    //     //     blockConfirmations: 6,
+    //     //     saveDeployments: true,
+    //     //     allowUnlimitedContractSize: true,
+    //     // },
+    //     // sepolia: {
+    //     //     url: SEPOLIA_RPC_URL,
+    //     //     accounts: [PRIVATE_KEY],
+    //     //     saveDeployments: true,
+    //     //     chainId: 11155111,
+    //     //     blockConfirmations: 6,
+    //     //     allowUnlimitedContractSize: true,
+    //     // },
+    //     // mumbai: {
+    //     //     url: MUMBAI_RPC_URL,
+    //     //     accounts: [PRIVATE_KEY],
+    //     //     saveDeployments: true,
+    //     //     chainId: 80001,
+    //     //     gas: 2100000,
+    //     //     gasPrice: 8000000000,
+    //     //     blockConfirmations: 6,
+    //     //     allowUnlimitedContractSize: true,
+    //     // },
+    // },
     solidity: {
         compilers: [
             {

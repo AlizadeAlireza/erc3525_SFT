@@ -20,7 +20,7 @@ describe("SFT Contract", () => {
         contract = await SFTContract.deploy()
         await contract.waitForDeployment()
     })
-    describe("alireza", async () => {
+    describe("constructor for after deploy contract", async () => {
         it("deployer is only owner", async () => {})
     })
 })
