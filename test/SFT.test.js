@@ -64,6 +64,10 @@ describe("SFT Contract", () => {
             expect(tokenPriceBeforeChange).to.equal(expectedPriceBeforeChange)
             expect(tokenPriceAfterChange).to.equal(newTokenPrice)
         })
-        it("not owner must get revert after call this function", async () => {})
+        it("not owner must get revert after call this function", async () => {
+            const newTokenPrice = 2
+
+            expect(contract.connect(user1).setNewTokenPrice(newTokenPrice)).to.be.reverted
+        })
     })
 })
