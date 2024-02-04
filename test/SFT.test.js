@@ -33,7 +33,12 @@ describe("SFT Contract", () => {
 
             expect(getContractDecimal).to.equal(expectedContractDecimal)
         })
-        it("symbol accurancy", async () => {})
+        it("symbol accurancy", async () => {
+            const getContractSymbol = await contract.symbol()
+            const expectedContractSymbol = "AZK"
+
+            expect(getContractSymbol).to.equal(expectedContractSymbol)
+        })
         it("name accurancy", async () => {})
     })
 })
