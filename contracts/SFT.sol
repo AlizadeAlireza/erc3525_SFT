@@ -7,7 +7,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@solvprotocol/erc-3525/ERC3525.sol";
 
-contract ERC3525GettingStarted is ERC3525 {
+contract SFT is ERC3525 {
     using Strings for uint256;
     address public owner;
 
