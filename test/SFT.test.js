@@ -46,4 +46,9 @@ describe("SFT Contract", () => {
             expect(getContractName).to.equal(expectedContractName)
         })
     })
+    describe("set new price of minting(setNewTokenPrice)", async () => {
+        it("only owner can call this function", async () => {})
+        it("only owner can change current price", async () => {})
+        it("not owner must get revert after call this function", async () => {})
+    })
 })
