@@ -17,7 +17,7 @@ describe("SFT Contract", () => {
 
         // SFT contract
         const SFTContract = await ethers.getContractFactory("SFT")
-        contract = await SFTContract.deploy()
+        contract = await SFTContract.deploy(owner.address)
         await contract.waitForDeployment()
     })
     describe("constructor for after deploy contract", async () => {
