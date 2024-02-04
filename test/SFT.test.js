@@ -23,13 +23,16 @@ describe("SFT Contract", () => {
     describe("constructor for after deploy contract", async () => {
         it("deployer is only owner", async () => {
             const getContractOwner = await contract.owner()
-            console.log(getContractOwner)
-            console.log(owner.address)
-
             const expectContractOwner = owner.address
+
             expect(getContractOwner).to.equal(expectContractOwner)
         })
-        it("decimal accurancy", async () => {})
+        it("decimal accurancy", async () => {
+            const getContractDecimal = await contract.valueDecimals()
+            const expectedContractDecimal = 18
+
+            expect(getContractDecimal).to.equal(expectedContractDecimal)
+        })
         it("symbol accurancy", async () => {})
         it("name accurancy", async () => {})
     })
