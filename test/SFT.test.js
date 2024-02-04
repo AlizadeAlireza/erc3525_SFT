@@ -47,11 +47,23 @@ describe("SFT Contract", () => {
         })
     })
     describe("set new price of minting(setNewTokenPrice)", async () => {
-        it("only owner can call this function", async () => {
-            const newPrice = 2
-            await contract.connect(owner).setNewTokenPrice(newPrice)
+        it("only owner can call this function and change the price", async () => {
+            const newTokenPrice = 2
+            await contract.connect(owner).setNewTokenPrice(newTokenPrice)
         })
-        it("only owner can change current price", async () => {})
+        it("set new price after changing price with call this function", async () => {
+            const tokenPriceBeforeChange = await contract._tokenPrice()
+            const expectedPriceBeforeChange = 0
+
+            const newTokenPrice = 2
+            await contract.connect(owner).setNewTokenPrice(newTokenPrice)
+
+            const tokenPriceAfterChange = await contract._tokenPrice()
+            // expected token price after change is the newTokenPrice variable
+
+            expect(tokenPriceBeforeChange).to.equal(expectedPriceBeforeChange)
+            expect(tokenPriceAfterChange).to.equal(newTokenPrice)
+        })
         it("not owner must get revert after call this function", async () => {})
     })
 })
