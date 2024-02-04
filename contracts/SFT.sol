@@ -15,7 +15,7 @@ contract SFT is Ownable, ERC3525 {
 
     constructor() Ownable(msg.sender) ERC3525("alireza", "AZK", 18) {}
 
-    function setNewTokenValue(uint _newTokenValue) public onlyOwner {
-        tokenValue = _newTokenValue;
-    }
+    // function setNewTokenValue(uint _newTokenValue) public onlyOwner {
+    //     tokenValue = _newTokenValue;
+    // }
 }

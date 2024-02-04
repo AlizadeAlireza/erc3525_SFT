@@ -17,11 +17,18 @@ describe("SFT Contract", () => {
 
         // SFT contract
         const SFTContract = await ethers.getContractFactory("SFT")
-        contract = await SFTContract.deploy(owner.address)
+        contract = await SFTContract.deploy() // msg.sender is deployer in solidity code
         await contract.waitForDeployment()
     })
     describe("constructor for after deploy contract", async () => {
-        it("deployer is only owner", async () => {})
+        it("deployer is only owner", async () => {
+            const getContractOwner = await contract.owner()
+            console.log(getContractOwner)
+            console.log(owner.address)
+
+            const expectContractOwner = owner.address
+            expect(getContractOwner).to.equal(expectContractOwner)
+        })
         it("decimal accurancy", async () => {})
         it("symbol accurancy", async () => {})
         it("name accurancy", async () => {})
