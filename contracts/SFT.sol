@@ -40,6 +40,11 @@ contract SFT is Ownable, ERC3525 {
         _tokenID++;
     }
 
+    function userSftChecker() public view returns (bool) {
+        // getUserSftId(userAddress); get the sft id
+        // sftIdValidation(userTokenId); send the id for validation
+    }
+
     function getTokenId() public view returns (uint id) {
         return _tokenID;
     }
