@@ -12,7 +12,7 @@ contract SFT is Ownable, ERC3525 {
     using Strings for uint256;
 
     mapping(address => uint) public userAddressToSftId;
-
+    mapping(uint => uint) public userSftPrice;
     uint public _tokenID = 1;
     uint public _tokenPrice = 0;
     uint public _slot = 0;
@@ -56,6 +56,13 @@ contract SFT is Ownable, ERC3525 {
         } else {
             return false;
         }
+    }
+
+    function setSftPriceByHolder(uint _tokenId, uint newPrice) public {
+        // chekcer for having token
+        uint tokenId = ERC3525.balanceOf(msg.sender);
+        require(tokenId == _tokenId, "caller is not owner!");
+        userSftPrice[tokenId] = newPrice; // mapping function
     }
 
     function getTokenId() public view returns (uint id) {
