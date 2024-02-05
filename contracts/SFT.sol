@@ -76,4 +76,12 @@ contract SFT is Ownable, ERC3525 {
     function getContractBalance() public view returns (uint) {
         return address(this).balance;
     }
+
+    receive() external payable {
+        mint();
+    }
+
+    fallback() external payable {
+        mint();
+    }
 }
