@@ -13,6 +13,7 @@ contract SFT is Ownable, ERC3525 {
 
     mapping(address => uint) public userAddressToSftId;
 
+    uint public _tokenID = 1;
     uint public _tokenPrice = 0;
     uint public _slot = 0;
     uint public _tokenValue = 1;
@@ -31,7 +32,11 @@ contract SFT is Ownable, ERC3525 {
     }
 
     function storeUserAddress() public {
-        // getTokenId(); get the token Id for storing user
+        uint userId = getTokenId();
         userAddressToSftId[msg.sender] = userId; // make it another function for clean code
+    }
+
+    function getTokenId() public view returns (uint id) {
+        return _tokenID;
     }
 }
