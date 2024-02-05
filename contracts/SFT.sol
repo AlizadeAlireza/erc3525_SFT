@@ -11,6 +11,8 @@ import "@solvprotocol/erc-3525/ERC3525.sol";
 contract SFT is Ownable, ERC3525 {
     using Strings for uint256;
 
+    mapping(address => uint) public userAddressToSftId;
+
     uint public _tokenPrice = 0;
     uint public _slot = 0;
     uint public _tokenValue = 1;
@@ -26,5 +28,10 @@ contract SFT is Ownable, ERC3525 {
         ERC3525._mint(msg.sender, _slot, _tokenValue);
         // storeUserAddress(); // function for store user address in the mapping
         // idGenerator(); // function for generate new user Sft Id for next user
+    }
+
+    function storeUserAddress() public {
+        // getTokenId(); get the token Id for storing user
+        userAddressToSftId[msg.sender] = userId; // make it another function for clean code
     }
 }
