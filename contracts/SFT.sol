@@ -72,4 +72,8 @@ contract SFT is Ownable, ERC3525 {
     function getHolderSftPrice(uint _tokenId) public view returns (uint) {
         return userSftPrice[_tokenId];
     }
+
+    function getContractBalance() public view returns (uint) {
+        return address(this).balance;
+    }
 }
