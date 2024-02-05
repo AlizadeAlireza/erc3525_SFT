@@ -77,6 +77,25 @@ describe("SFT Contract", () => {
         it("the total supply must increase", async () => {})
         it("we can test inside functions with it", async () => {})
     })
+    describe("storing the address of users that bought SFT(storeUserAddress)", async () => {})
+
+    describe("generate ID for next User SFT(idGenerator)", async () => {})
+
+    describe("getting Last Sft Token Id(getTokenId)", async () => {})
+
+    describe("check User Having Sft for validation(userSftChecker)", async () => {})
+
+    describe("getting Sft Token Id With User Address(getUserSftId)", async () => {})
+
+    describe("check The User Have Token Id in our Smart Contract(sftIdValidation)", async () => {})
+
+    describe("set new pirce On Owned SFT(setSftPriceByHolder)", async () => {})
+
+    describe("Update New Price On SFT By User(updateSftPriceByHolder)", async () => {})
+
+    describe("get The Price That User Set On his/her SFT(getHolderSftPrice)", async () => {})
+
+    describe("get Contract Balance After Users Minting(getContractBalance)", async () => {})
 })
 // describe for user address saver
 // describe and think on id generator

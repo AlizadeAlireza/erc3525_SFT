@@ -66,7 +66,11 @@ contract SFT is Ownable, ERC3525 {
         // chekcer for having token
         uint tokenId = ERC3525.balanceOf(msg.sender);
         require(tokenId == _tokenId, "caller is not owner!");
-        userSftPrice[tokenId] = newPrice; // mapping function
+        updateSftPriceByHolder(tokenId, newPrice);
+    }
+
+    function updateSftPriceByHolder(uint _tokenId, uint newPrice) public {
+        userSftPrice[_tokenId] = newPrice;
     }
 
     function getTokenId() public view returns (uint id) {
