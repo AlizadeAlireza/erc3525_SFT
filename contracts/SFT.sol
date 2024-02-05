@@ -27,13 +27,17 @@ contract SFT is Ownable, ERC3525 {
     function mint() public payable {
         require(msg.value == _tokenPrice, "Incorrect value sent for minting");
         ERC3525._mint(msg.sender, _slot, _tokenValue);
-        // storeUserAddress(); // function for store user address in the mapping
-        // idGenerator(); // function for generate new user Sft Id for next user
+        storeUserAddress();
+        idGenerator();
     }
 
     function storeUserAddress() public {
         uint userId = getTokenId();
         userAddressToSftId[msg.sender] = userId; // make it another function for clean code
+    }
+
+    function idGenerator() public {
+        _tokenID++;
     }
 
     function getTokenId() public view returns (uint id) {
