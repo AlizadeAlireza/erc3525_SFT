@@ -20,4 +20,11 @@ contract SFT is Ownable, ERC3525 {
     function setNewTokenPrice(uint _newTokenPrice) public onlyOwner {
         _tokenPrice = _newTokenPrice;
     }
+
+    function mint() public payable {
+        require(msg.value == _tokenPrice, "Incorrect value sent for minting");
+        ERC3525._mint(msg.sender, _slot, _tokenValue);
+        // storeUserAddress(); // function for store user address in the mapping
+        // idGenerator(); // function for generate new user Sft Id for next user
+    }
 }
