@@ -1,0 +1,13 @@
+{
+    "name": "My Semi-Fungible Token",
+    "description": "A semi-fungible token representing a financial instrument",
+    "image": "https://ipfs.io/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco",
+    "tokenValue": 1,
+    "slot": 0,
+    "tokenId": "non-value for now",
+    "tokenPrice": "non-value for now",
+    "properties": {
+      "issuer": "alireza alizadeh",
+      "maturityDate": "2023-02-05"
+    }
+}

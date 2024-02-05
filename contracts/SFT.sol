@@ -11,6 +11,10 @@ import "@solvprotocol/erc-3525/ERC3525.sol";
 contract SFT is Ownable, ERC3525 {
     using Strings for uint256;
 
+    // it is simple metadata
+    string public constant tokenUri =
+        "https://ipfs.filebase.io/ipfs/QmdC8CMNnD36DT4uhrR3c2rohHpMGdiSqZeiJngs23MYtH";
+
     mapping(address => uint) public userAddressToSftId;
     mapping(uint => uint) public userSftPrice;
     uint public _tokenID = 1;
