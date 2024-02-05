@@ -70,4 +70,23 @@ describe("SFT Contract", () => {
             await expect(contract.connect(user1).setNewTokenPrice(newTokenPrice)).to.be.reverted
         })
     })
+    describe("mint the Sft by the user(mint)", async () => {
+        it("the correct value for minting must be pass", async () => {})
+        it("the value for minting is lesser than specified price", async () => {})
+        it("the value for minting is more than specified price", async () => {})
+        it("the total supply must increase", async () => {})
+        it("we can test inside functions with it", async () => {})
+    })
 })
+// describe for user address saver
+// describe and think on id generator
+// describe and think on userSftChecker
+// })
+// it("test for balance", async () => {
+//     const newTokenPrice = 2
+//     await contract.connect(owner).setNewTokenPrice(newTokenPrice)
+
+//     // const value = ethers.utils.parseEther((PURCHASED_DONUTS * DONUT_PRICE).toString())
+//     await contract.connect(user1).mint({ value: 2 })
+//     console.log(await contract.balance())
+// })
