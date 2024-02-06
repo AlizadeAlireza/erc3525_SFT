@@ -94,7 +94,12 @@ describe("SFT Contract", () => {
 
             expect(totalSupply).to.equal(expectedTotalSupply)
         })
-        it("we can test inside functions with it", async () => {})
+        it("must revert if User already have a SFT", async () => {
+            const currentValue = 10
+            await contract.connect(user1).mint({ value: currentValue })
+
+            expect(contract.connect(user1).mint({ value: currentValue })).to.be.reverted
+        })
     })
     describe("storing the address of users that bought SFT(storeUserAddress)", async () => {
         it("we need ensure store the sft id into our mapping", async () => {
