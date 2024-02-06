@@ -39,6 +39,7 @@ contract SFT is Ownable, ERC3525 {
         ERC3525._mint(msg.sender, _slot, _tokenValue);
         storeUserAddress();
         idGenerator();
+        emit sftMintByUser(msg.sender, getTokenId(), _tokenValue, msg.value);
     }
 
     function storeUserAddress() public {
