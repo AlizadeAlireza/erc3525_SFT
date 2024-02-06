@@ -111,7 +111,9 @@ describe("SFT Contract", () => {
         it("must pass with valid token ID", async () => {})
     })
 
-    describe("Update New Price On SFT By User(updateSftPriceByHolder)", async () => {})
+    describe("Update New Price On SFT By User(updateSftPriceByHolder)", async () => {
+        it("price must change with calling this function", async () => {})
+    })
 
     describe("get The Price That User Set On his/her SFT(getHolderSftPrice)", async () => {})
 
