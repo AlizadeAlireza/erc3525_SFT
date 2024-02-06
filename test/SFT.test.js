@@ -83,7 +83,9 @@ describe("SFT Contract", () => {
         })
     })
 
-    describe("generate ID for next User SFT(idGenerator)", async () => {})
+    describe("generate ID for next User SFT(idGenerator)", async () => {
+        it("new ID must be generate while calling this function", async () => {})
+    })
 
     describe("getting Last Sft Token Id(getTokenId)", async () => {})
 
