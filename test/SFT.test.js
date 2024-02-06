@@ -120,18 +120,16 @@ describe("SFT Contract", () => {
     })
 
     describe("get Contract Balance After Users Minting(getContractBalance)", async () => {
-        it("function must return contract balance", async () => {})
+        it("function must return contract balance", async () => {
+            const newTokenPrice = 2
+            await contract.connect(owner).setNewTokenPrice(newTokenPrice)
+
+            await contract.connect(user1).mint({ value: 2 })
+            console.log(await contract.getContractBalance())
+        })
     })
 })
 // describe for user address saver
 // describe and think on id generator
 // describe and think on userSftChecker
-// })
-// it("test for balance", async () => {
-//     const newTokenPrice = 2
-//     await contract.connect(owner).setNewTokenPrice(newTokenPrice)
-
-//     // const value = ethers.utils.parseEther((PURCHASED_DONUTS * DONUT_PRICE).toString())
-//     await contract.connect(user1).mint({ value: 2 })
-//     console.log(await contract.balance())
 // })
