@@ -120,7 +120,15 @@ describe("SFT Contract", () => {
     })
 
     describe("getting Last Sft Token Id(getTokenId)", async () => {
-        it("return token ID by calling this function", async () => {})
+        it("return token ID by calling this function", async () => {
+            const currentValue = 10
+            await contract.mint({ value: currentValue })
+
+            const expectedCurrentTokenId = 2
+            const currentTokenId = await contract.getTokenId()
+
+            expect(currentTokenId).to.equal(expectedCurrentTokenId)
+        })
     })
 
     describe("check User Having Sft for validation(userSftChecker)", async () => {
