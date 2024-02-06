@@ -253,9 +253,30 @@ describe("SFT Contract", () => {
         })
     })
     describe("(Events) test events after calling functions", async () => {
-        it("test (setNewTokenPriceByOwenr) event", async () => {})
-        it("test (sftMintByUser) event", async () => {})
-        it("test (sftNewPriceByHolder) event", async () => {})
+        it("test (SetNewTokenPriceByOwenr) event", async () => {
+            const tokenPrice = 15
+            expect(await contract.setNewTokenPrice(tokenPrice)).to.emit(
+                contract,
+                "SetNewTokenPriceByOwenr"
+            )
+        })
+
+        it("test (SftMintByUser) event", async () => {
+            const currentValue = 10
+            expect(await contract.mint({ value: currentValue })).to.emit(contract, "SftMintByUser")
+        })
+        it("test (SftNewPriceByHolder) event", async () => {
+            const currentValue = 10
+            const newTokenPrice = 15
+            const validTokenId = 1
+
+            await contract.mint({ value: currentValue })
+
+            expect(await contract.setSftPriceByHolder(validTokenId, newTokenPrice)).to.emit(
+                contract,
+                "SftNewPriceByHolder"
+            )
+        })
     })
 })
 // describe for user address saver
