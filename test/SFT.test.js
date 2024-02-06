@@ -75,7 +75,11 @@ describe("SFT Contract", () => {
             const currentValue = 10
             await contract.mint({ value: currentValue })
         })
-        it("the value for minting is lesser than specified price", async () => {})
+        it("the value for minting is lesser than specified price", async () => {
+            const lesserTokenMintPrice = 2
+            await expect(contract.connect(user1).mint({ value: lesserTokenMintPrice })).to.be
+                .reverted
+        })
         it("the value for minting is more than specified price", async () => {})
         it("the total supply must increase", async () => {})
         it("we can test inside functions with it", async () => {})
