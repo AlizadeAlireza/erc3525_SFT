@@ -53,7 +53,7 @@ describe("SFT Contract", () => {
         })
         it("set new price after changing price with call this function", async () => {
             const tokenPriceBeforeChange = await contract._tokenPrice()
-            const expectedPriceBeforeChange = 0
+            const expectedPriceBeforeChange = 10
 
             const newTokenPrice = 2
             await contract.connect(owner).setNewTokenPrice(newTokenPrice)
@@ -71,7 +71,10 @@ describe("SFT Contract", () => {
         })
     })
     describe("mint the Sft by the user(mint)", async () => {
-        it("the correct value for minting must be pass", async () => {})
+        it("the correct value for minting must be pass", async () => {
+            const currentValue = 10
+            await contract.mint({ value: currentValue })
+        })
         it("the value for minting is lesser than specified price", async () => {})
         it("the value for minting is more than specified price", async () => {})
         it("the total supply must increase", async () => {})

@@ -18,7 +18,7 @@ contract SFT is Ownable, ERC3525 {
     mapping(address => uint) public userAddressToSftId;
     mapping(uint => uint) public userSftPrice;
     uint public _tokenID = 1;
-    uint public _tokenPrice = 0;
+    uint public _tokenPrice = 10;
     uint public _slot = 0;
     uint public _tokenValue = 1;
 
