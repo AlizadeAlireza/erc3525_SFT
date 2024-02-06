@@ -210,7 +210,18 @@ describe("SFT Contract", () => {
     })
 
     describe("Update New Price On SFT By User(updateSftPriceByHolder)", async () => {
-        it("price must change with calling this function", async () => {})
+        it("price must change with calling this function", async () => {
+            const currentValue = 10
+            const tokenId = 1
+            const newPrice = 45
+            await contract.connect(user2).mint({ value: currentValue })
+
+            await contract.updateSftPriceByHolder(tokenId, newPrice)
+
+            const changedNewPrice = await contract.userSftPrice(tokenId)
+
+            expect(changedNewPrice).to.equal(newPrice)
+        })
     })
 
     describe("get The Price That User Set On his/her SFT(getHolderSftPrice)", async () => {
