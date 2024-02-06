@@ -153,7 +153,15 @@ describe("SFT Contract", () => {
     })
 
     describe("getting Sft Token Id With User Address(getUserSftId)", async () => {
-        it("function must return user SFT ID with his/her address", async () => {})
+        it("function must return user SFT ID with his/her address", async () => {
+            const currentValue = 10
+            await contract.connect(user2).mint({ value: currentValue })
+
+            const expectedUserSftId = 1
+            const userSFTId = await contract.getUserSftId(user2.address)
+
+            expect(userSFTId).to.equal(expectedUserSftId)
+        })
     })
 
     describe("check The User Have Token Id in our Smart Contract(sftIdValidation)", async () => {
