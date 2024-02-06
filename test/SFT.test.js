@@ -100,7 +100,10 @@ describe("SFT Contract", () => {
         it("function must return user SFT ID with his/her address", async () => {})
     })
 
-    describe("check The User Have Token Id in our Smart Contract(sftIdValidation)", async () => {})
+    describe("check The User Have Token Id in our Smart Contract(sftIdValidation)", async () => {
+        it("function must return true if token id isn't zero", async () => {})
+        it("function must return false if token id is zero", async () => {})
+    })
 
     describe("set new pirce On Owned SFT(setSftPriceByHolder)", async () => {})
 
