@@ -22,10 +22,15 @@ contract SFT is Ownable, ERC3525 {
     uint public _slot = 0;
     uint public _tokenValue = 1;
 
+    event setNewTokenPriceByOwenr(address owner, uint newSftPrice);
+    event sftMintByUser(address user, uint tokenId, uint tokenValue, uint currentSftPrice);
+    event sftNewPriceByHolder(address sftOwner, uint newOwnedSftPrice, uint tokenId);
+
     constructor() Ownable(msg.sender) ERC3525("alireza", "AZK", 18) {}
 
     function setNewTokenPrice(uint _newTokenPrice) public onlyOwner {
         _tokenPrice = _newTokenPrice;
+        emit setNewTokenPriceByOwenr(_msgSender(), _newTokenPrice);
     }
 
     function mint() public payable {
@@ -68,6 +73,7 @@ contract SFT is Ownable, ERC3525 {
         uint tokenId = ERC3525.balanceOf(msg.sender);
         require(tokenId == _tokenId, "caller is not owner!");
         updateSftPriceByHolder(tokenId, newPrice);
+        emit sftNewPriceByHolder(msg.sender, newPrice, _tokenId);
     }
 
     function updateSftPriceByHolder(uint _tokenId, uint newPrice) public {
