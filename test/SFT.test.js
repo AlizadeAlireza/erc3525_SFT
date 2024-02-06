@@ -165,7 +165,15 @@ describe("SFT Contract", () => {
     })
 
     describe("check The User Have Token Id in our Smart Contract(sftIdValidation)", async () => {
-        it("function must return true if token id isn't zero", async () => {})
+        it("function must return true if token id isn't zero", async () => {
+            const currentValue = 10
+            await contract.connect(user2).mint({ value: currentValue })
+
+            const expectedValidation = true
+            const realValidation = await contract.sftIdValidation(user2.address)
+
+            expect(realValidation).to.equal(expectedValidation)
+        })
         it("function must return false if token id is zero", async () => {})
     })
 
