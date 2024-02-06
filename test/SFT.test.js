@@ -110,7 +110,13 @@ describe("SFT Contract", () => {
     })
 
     describe("generate ID for next User SFT(idGenerator)", async () => {
-        it("new ID must be generate while calling this function", async () => {})
+        it("new ID must be generate while calling this function", async () => {
+            const expectedNewTokenId = 2
+            await contract.idGenerator()
+            const newTokenId = await contract.getTokenId()
+
+            expect(newTokenId).to.equal(expectedNewTokenId)
+        })
     })
 
     describe("getting Last Sft Token Id(getTokenId)", async () => {
