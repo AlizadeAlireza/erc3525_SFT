@@ -198,7 +198,15 @@ describe("SFT Contract", () => {
 
             await expect(contract.setSftPriceByHolder(invalidTokenId, newPrice)).to.be.reverted
         })
-        it("must pass with valid token ID", async () => {})
+        it("must pass with valid token ID", async () => {
+            const currentValue = 10
+            await contract.connect(user1).mint({ value: currentValue })
+
+            const validTokenId = 1
+            const newPrice = 15
+
+            await expect(contract.setSftPriceByHolder(validTokenId, newPrice)).to.be.reverted
+        })
     })
 
     describe("Update New Price On SFT By User(updateSftPriceByHolder)", async () => {
