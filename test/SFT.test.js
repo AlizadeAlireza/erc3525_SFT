@@ -96,7 +96,9 @@ describe("SFT Contract", () => {
         it("function must return false if user hasn't SFT", async () => {})
     })
 
-    describe("getting Sft Token Id With User Address(getUserSftId)", async () => {})
+    describe("getting Sft Token Id With User Address(getUserSftId)", async () => {
+        it("function must return user SFT ID with his/her address", async () => {})
+    })
 
     describe("check The User Have Token Id in our Smart Contract(sftIdValidation)", async () => {})
 
