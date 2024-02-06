@@ -174,7 +174,13 @@ describe("SFT Contract", () => {
 
             expect(realValidation).to.equal(expectedValidation)
         })
-        it("function must return false if token id is zero", async () => {})
+        it("function must return false if token id is zero", async () => {
+            const tokenIdWithoutMint = 0
+            const expectedValidation = false
+            const realValidation = await contract.sftIdValidation(tokenIdWithoutMint)
+            console.log(realValidation)
+            expect(realValidation).to.equal(expectedValidation)
+        })
     })
 
     describe("set new pirce On Owned SFT(setSftPriceByHolder)", async () => {
