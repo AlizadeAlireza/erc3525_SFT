@@ -184,7 +184,11 @@ describe("SFT Contract", () => {
     })
 
     describe("set new pirce On Owned SFT(setSftPriceByHolder)", async () => {
-        it("set the price without minting", async () => {})
+        it("set the price without minting", async () => {
+            const tokenId = 4
+            const newPrice = 15
+            await expect(contract.setSftPriceByHolder(tokenId, newPrice)).to.be.reverted
+        })
         it("must revert with invalid token ID", async () => {})
         it("must pass with valid token ID", async () => {})
     })
