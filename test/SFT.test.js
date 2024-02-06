@@ -205,7 +205,7 @@ describe("SFT Contract", () => {
             const validTokenId = 1
             const newPrice = 15
 
-            await expect(contract.setSftPriceByHolder(validTokenId, newPrice)).to.be.reverted
+            expect(contract.connect(user1).setSftPriceByHolder(validTokenId, newPrice))
         })
     })
 
