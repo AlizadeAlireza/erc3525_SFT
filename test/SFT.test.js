@@ -105,7 +105,11 @@ describe("SFT Contract", () => {
         it("function must return false if token id is zero", async () => {})
     })
 
-    describe("set new pirce On Owned SFT(setSftPriceByHolder)", async () => {})
+    describe("set new pirce On Owned SFT(setSftPriceByHolder)", async () => {
+        it("set the price without minting", async () => {})
+        it("must revert with invalid token ID", async () => {})
+        it("must pass with valid token ID", async () => {})
+    })
 
     describe("Update New Price On SFT By User(updateSftPriceByHolder)", async () => {})
 
