@@ -77,7 +77,11 @@ describe("SFT Contract", () => {
         it("the total supply must increase", async () => {})
         it("we can test inside functions with it", async () => {})
     })
-    describe("storing the address of users that bought SFT(storeUserAddress)", async () => {})
+    describe("storing the address of users that bought SFT(storeUserAddress)", async () => {
+        it("we need ensure store the sft id into our mapping", async () => {
+            // first we need to mint and use this function
+        })
+    })
 
     describe("generate ID for next User SFT(idGenerator)", async () => {})
 
