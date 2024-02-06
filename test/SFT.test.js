@@ -124,7 +124,16 @@ describe("SFT Contract", () => {
     })
 
     describe("check User Having Sft for validation(userSftChecker)", async () => {
-        it("function must return true if user has SFT", async () => {})
+        it("function must return true if user has SFT", async () => {
+            // mint for having sft
+            const currentValue = 10
+            await contract.connect(user2).mint({ value: currentValue })
+
+            const expectedValidation = true
+            const realValidation = await contract.connect(user2).userSftChecker(user2.address)
+
+            expect(expectedValidation).to.equal(realValidation)
+        })
         it("function must return false if user hasn't SFT", async () => {})
     })
 
