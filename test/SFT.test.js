@@ -80,7 +80,11 @@ describe("SFT Contract", () => {
             await expect(contract.connect(user1).mint({ value: lesserTokenMintPrice })).to.be
                 .reverted
         })
-        it("the value for minting is more than specified price", async () => {})
+        it("the value for minting is more than specified price", async () => {
+            const extraTokenMintPrice = 12
+            await expect(contract.connect(user1).mint({ value: extraTokenMintPrice })).to.be
+                .reverted
+        })
         it("the total supply must increase", async () => {})
         it("we can test inside functions with it", async () => {})
     })
