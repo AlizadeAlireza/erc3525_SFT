@@ -85,7 +85,15 @@ describe("SFT Contract", () => {
             await expect(contract.connect(user1).mint({ value: extraTokenMintPrice })).to.be
                 .reverted
         })
-        it("the total supply must increase", async () => {})
+        it("the total supply must increase", async () => {
+            const currentValue = 10
+            await contract.mint({ value: currentValue })
+
+            const expectedTotalSupply = 1
+            const totalSupply = await contract.totalSupply()
+
+            expect(totalSupply).to.equal(expectedTotalSupply)
+        })
         it("we can test inside functions with it", async () => {})
     })
     describe("storing the address of users that bought SFT(storeUserAddress)", async () => {
