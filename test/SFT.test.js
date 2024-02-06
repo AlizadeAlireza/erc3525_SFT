@@ -91,7 +91,10 @@ describe("SFT Contract", () => {
         it("return token ID by calling this function", async () => {})
     })
 
-    describe("check User Having Sft for validation(userSftChecker)", async () => {})
+    describe("check User Having Sft for validation(userSftChecker)", async () => {
+        it("function must return true if user has SFT", async () => {})
+        it("function must return false if user hasn't SFT", async () => {})
+    })
 
     describe("getting Sft Token Id With User Address(getUserSftId)", async () => {})
 
