@@ -252,6 +252,11 @@ describe("SFT Contract", () => {
             console.log(await contract.getContractBalance())
         })
     })
+    describe("(Events) test events after calling functions", async () => {
+        it("", async () => {})
+        it("", async () => {})
+        it("", async () => {})
+    })
 })
 // describe for user address saver
 // describe and think on id generator
