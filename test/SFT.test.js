@@ -115,7 +115,9 @@ describe("SFT Contract", () => {
         it("price must change with calling this function", async () => {})
     })
 
-    describe("get The Price That User Set On his/her SFT(getHolderSftPrice)", async () => {})
+    describe("get The Price That User Set On his/her SFT(getHolderSftPrice)", async () => {
+        it("function must return holder price by calling this function", async () => {})
+    })
 
     describe("get Contract Balance After Users Minting(getContractBalance)", async () => {})
 })
