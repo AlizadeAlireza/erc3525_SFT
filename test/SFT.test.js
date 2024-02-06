@@ -119,7 +119,9 @@ describe("SFT Contract", () => {
         it("function must return holder price by calling this function", async () => {})
     })
 
-    describe("get Contract Balance After Users Minting(getContractBalance)", async () => {})
+    describe("get Contract Balance After Users Minting(getContractBalance)", async () => {
+        it("function must return contract balance", async () => {})
+    })
 })
 // describe for user address saver
 // describe and think on id generator
