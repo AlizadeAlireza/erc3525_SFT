@@ -225,7 +225,17 @@ describe("SFT Contract", () => {
     })
 
     describe("get The Price That User Set On his/her SFT(getHolderSftPrice)", async () => {
-        it("function must return holder price by calling this function", async () => {})
+        it("function must return holder price by calling this function", async () => {
+            const currentValue = 10
+            const tokenId = 1
+            const newPrice = 45
+            await contract.connect(user2).mint({ value: currentValue })
+            await contract.updateSftPriceByHolder(tokenId, newPrice)
+
+            const expectedUserSftPrice = await contract.getHolderSftPrice(tokenId)
+
+            expect(newPrice).to.equal(expectedUserSftPrice)
+        })
     })
 
     describe("get Contract Balance After Users Minting(getContractBalance)", async () => {
