@@ -99,6 +99,13 @@ describe("SFT Contract", () => {
     describe("storing the address of users that bought SFT(storeUserAddress)", async () => {
         it("we need ensure store the sft id into our mapping", async () => {
             // first we need to mint and use this function
+            const currentValue = 10
+            await contract.connect(user2).mint({ value: currentValue })
+
+            const expectedUserId = 1
+            const mappingUserId = await contract.userAddressToSftId(user2.address)
+
+            expect(expectedUserId).to.equal(mappingUserId)
         })
     })
 
