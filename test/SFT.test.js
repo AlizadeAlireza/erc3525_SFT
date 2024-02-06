@@ -253,9 +253,9 @@ describe("SFT Contract", () => {
         })
     })
     describe("(Events) test events after calling functions", async () => {
-        it("", async () => {})
-        it("", async () => {})
-        it("", async () => {})
+        it("test (setNewTokenPriceByOwenr) event", async () => {})
+        it("test (sftMintByUser) event", async () => {})
+        it("test (sftNewPriceByHolder) event", async () => {})
     })
 })
 // describe for user address saver
