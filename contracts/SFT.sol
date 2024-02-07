@@ -13,6 +13,7 @@ contract SFT is Ownable, ERC3525 {
 
     /* Errors */
     error SFT__YouAlreadyHaveSFT();
+    error SFT__IncorrectValueSentForMinting();
 
     /* State variables */
 
@@ -48,7 +49,9 @@ contract SFT is Ownable, ERC3525 {
     function mint() public payable {
         // require(!userSftChecker(msg.sender), "You already have a SFT");
         if (userSftChecker(msg.sender)) revert SFT__YouAlreadyHaveSFT();
-        require(msg.value == _tokenPrice, "Incorrect value sent for minting");
+        // require(msg.value == _tokenPrice, "Incorrect value sent for minting");
+        if (msg.value != _tokenPrice) revert SFT__IncorrectValueSentForMinting();
+
         ERC3525._mint(msg.sender, _slot, _tokenValue);
         storeUserAddress();
         idGenerator();
