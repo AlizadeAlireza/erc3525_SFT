@@ -28,18 +28,15 @@ contract SFT is Ownable, ERC3525 {
         "https://ipfs.filebase.io/ipfs/QmdC8CMNnD36DT4uhrR3c2rohHpMGdiSqZeiJngs23MYtH";
 
     /* Type declarations */
-
     mapping(address => uint) public userAddressToSftId;
     mapping(uint => uint) public userSftPrice;
 
     /* Events */
-
     event SetNewTokenPriceByOwenr(address owner, uint newSftPrice);
     event SftMintByUser(address user, uint tokenId, uint tokenValue, uint currentSftPrice);
     event SftNewPriceByHolder(address sftOwner, uint newOwnedSftPrice, uint tokenId);
 
     /* main functions */
-
     constructor() Ownable(msg.sender) ERC3525("alireza", "AZK", 18) {}
 
     function setNewTokenPrice(uint _newTokenPrice) public onlyOwner {
@@ -48,9 +45,7 @@ contract SFT is Ownable, ERC3525 {
     }
 
     function mint() public payable {
-        // require(!userSftChecker(msg.sender), "You already have a SFT");
         if (userSftChecker(msg.sender)) revert SFT__YouAlreadyHaveSFT();
-        // require(msg.value == _tokenPrice, "Incorrect value sent for minting");
         if (msg.value != _tokenPrice) revert SFT__IncorrectValueSentForMinting();
 
         ERC3525._mint(msg.sender, _slot, _tokenValue);
@@ -74,11 +69,6 @@ contract SFT is Ownable, ERC3525 {
         return sftIdValidation(userTokenId);
     }
 
-    // getSftIdByUserAddress
-    function getUserSftId(address userAddress) public view returns (uint tokenId) {
-        return userAddressToSftId[userAddress];
-    }
-
     // make a require on it
     function sftIdValidation(uint userTokenId) public pure returns (bool) {
         if (userTokenId != 0) {
@@ -89,9 +79,7 @@ contract SFT is Ownable, ERC3525 {
     }
 
     function setSftPriceByHolder(uint _tokenId, uint newPrice) public {
-        // chekcer for having token
         uint tokenId = ERC3525.balanceOf(msg.sender);
-        // require(tokenId == _tokenId, "caller is not owner!");
         if (tokenId != _tokenId) revert SFT__CallerIsNotTheOwner();
 
         updateSftPriceByHolder(tokenId, newPrice);
@@ -103,6 +91,10 @@ contract SFT is Ownable, ERC3525 {
     }
 
     /* getter functions */
+    // getSftIdByUserAddress
+    function getUserSftId(address userAddress) public view returns (uint tokenId) {
+        return userAddressToSftId[userAddress];
+    }
 
     function getTokenId() public view returns (uint id) {
         return _tokenID;
