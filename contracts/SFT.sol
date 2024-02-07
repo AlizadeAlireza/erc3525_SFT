@@ -14,6 +14,7 @@ contract SFT is Ownable, ERC3525 {
     /* Errors */
     error SFT__YouAlreadyHaveSFT();
     error SFT__IncorrectValueSentForMinting();
+    error SFT__CallerIsNotTheOwner();
 
     /* State variables */
 
@@ -90,7 +91,9 @@ contract SFT is Ownable, ERC3525 {
     function setSftPriceByHolder(uint _tokenId, uint newPrice) public {
         // chekcer for having token
         uint tokenId = ERC3525.balanceOf(msg.sender);
-        require(tokenId == _tokenId, "caller is not owner!");
+        // require(tokenId == _tokenId, "caller is not owner!");
+        if (tokenId != _tokenId) revert SFT__CallerIsNotTheOwner();
+
         updateSftPriceByHolder(tokenId, newPrice);
         emit SftNewPriceByHolder(msg.sender, newPrice, _tokenId);
     }
