@@ -183,7 +183,6 @@ describe("SFT Contract", () => {
             const tokenIdWithoutMint = 0
             const expectedValidation = false
             const realValidation = await contract.sftIdValidation(tokenIdWithoutMint)
-            console.log(realValidation)
             expect(realValidation).to.equal(expectedValidation)
         })
     })
@@ -250,7 +249,6 @@ describe("SFT Contract", () => {
             await contract.connect(owner).setNewTokenPrice(newTokenPrice)
 
             await contract.connect(user1).mint({ value: 2 })
-            console.log(await contract.getContractBalance())
         })
     })
     describe("(Events) test events after calling functions", async () => {
