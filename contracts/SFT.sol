@@ -18,17 +18,14 @@ contract SFT is Ownable, ERC3525 {
 
     /* State variables */
 
-    // string private _name;
-    // string private _symbol;
-    // uint8 private _decimals;
     uint public _tokenID = 1;
     uint public _tokenPrice = 10;
     uint public _slot = 0;
     uint public _tokenValue = 1;
 
     // it is simple metadata
-    string public constant tokenUri =
-        "https://ipfs.filebase.io/ipfs/QmdC8CMNnD36DT4uhrR3c2rohHpMGdiSqZeiJngs23MYtH";
+    // string public constant tokenUri =
+    //     "https://ipfs.filebase.io/ipfs/QmdC8CMNnD36DT4uhrR3c2rohHpMGdiSqZeiJngs23MYtH";
 
     /* Type declarations */
     mapping(address => uint) public userAddressToSftId;
@@ -45,7 +42,7 @@ contract SFT is Ownable, ERC3525 {
         string memory name_,
         string memory symbole_,
         uint8 decimal_
-    ) Ownable(msg.sender) ERC3525(name_, symbole_, decimal_) {}
+    ) Ownable(initialOwner) ERC3525(name_, symbole_, decimal_) {}
 
     function setNewTokenPrice(uint _newTokenPrice) public onlyOwner {
         _tokenPrice = _newTokenPrice;
@@ -116,11 +113,11 @@ contract SFT is Ownable, ERC3525 {
         return address(this).balance;
     }
 
-    receive() external payable {
-        mint();
-    }
+    // receive() external payable {
+    //     mint();
+    // }
 
-    fallback() external payable {
-        mint();
-    }
+    // fallback() external payable {
+    //     mint();
+    // }
 }

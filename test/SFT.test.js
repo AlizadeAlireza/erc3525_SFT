@@ -253,6 +253,11 @@ describe("SFT Contract", () => {
             await contract.connect(owner).setNewTokenPrice(newTokenPrice)
 
             await contract.connect(user1).mint({ value: 2 })
+
+            const expectContractBalance = newTokenPrice
+            const realContractBalance = await contract.getContractBalance()
+
+            expect(expectContractBalance).to.equal(realContractBalance)
         })
     })
     describe("(Events) test events after calling functions", async () => {
