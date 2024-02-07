@@ -11,12 +11,24 @@ import "@solvprotocol/erc-3525/ERC3525.sol";
 contract SFT is Ownable, ERC3525 {
     using Strings for uint256;
 
+    /* Errors */
+
+    /* State variables */
+
+    /* Type declarations */
+
+    /* Events */
+
+    /* main functions */
+
+    /* getter functions */
     // it is simple metadata
     string public constant tokenUri =
         "https://ipfs.filebase.io/ipfs/QmdC8CMNnD36DT4uhrR3c2rohHpMGdiSqZeiJngs23MYtH";
 
     mapping(address => uint) public userAddressToSftId;
     mapping(uint => uint) public userSftPrice;
+
     uint public _tokenID = 1;
     uint public _tokenPrice = 10;
     uint public _slot = 0;
@@ -57,10 +69,12 @@ contract SFT is Ownable, ERC3525 {
         return sftIdValidation(userTokenId);
     }
 
+    // getSftIdByUserAddress
     function getUserSftId(address userAddress) public view returns (uint tokenId) {
         return userAddressToSftId[userAddress];
     }
 
+    // make a require on it
     function sftIdValidation(uint userTokenId) public pure returns (bool) {
         if (userTokenId != 0) {
             return true;

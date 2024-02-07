@@ -204,6 +204,7 @@ describe("SFT Contract", () => {
             await expect(contract.setSftPriceByHolder(invalidTokenId, newPrice)).to.be.reverted
         })
         it("must pass with valid token ID", async () => {
+            // current price
             const currentValue = 10
             await contract.connect(user1).mint({ value: currentValue })
 
