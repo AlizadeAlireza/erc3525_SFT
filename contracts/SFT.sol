@@ -18,6 +18,9 @@ contract SFT is Ownable, ERC3525 {
 
     /* State variables */
 
+    // string private _name;
+    // string private _symbol;
+    // uint8 private _decimals;
     uint public _tokenID = 1;
     uint public _tokenPrice = 10;
     uint public _slot = 0;
@@ -37,7 +40,12 @@ contract SFT is Ownable, ERC3525 {
     event SftNewPriceByHolder(address sftOwner, uint newOwnedSftPrice, uint tokenId);
 
     /* main functions */
-    constructor() Ownable(msg.sender) ERC3525("alireza", "AZK", 18) {}
+    constructor(
+        address initialOwner,
+        string memory name_,
+        string memory symbole_,
+        uint8 decimal_
+    ) Ownable(msg.sender) ERC3525(name_, symbole_, decimal_) {}
 
     function setNewTokenPrice(uint _newTokenPrice) public onlyOwner {
         _tokenPrice = _newTokenPrice;

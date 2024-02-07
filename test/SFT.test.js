@@ -7,6 +7,10 @@ describe("SFT Contract", () => {
     let contract
     let owner, user1, user2, user3, user4
 
+    const ercName = "alireza"
+    const ercSymbol = "AZK"
+    const DECIMAL = 18
+
     beforeEach(async () => {
         const accounts = await ethers.getSigners()
         owner = accounts[0]
@@ -17,7 +21,7 @@ describe("SFT Contract", () => {
 
         // SFT contract
         const SFTContract = await ethers.getContractFactory("SFT")
-        contract = await SFTContract.deploy() // msg.sender is deployer in solidity code
+        contract = await SFTContract.deploy(owner.address, ercName, ercSymbol, DECIMAL) // msg.sender is deployer in solidity code
         await contract.waitForDeployment()
     })
     describe("constructor for after deploy contract", async () => {
