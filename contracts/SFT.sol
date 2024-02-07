@@ -21,15 +21,15 @@ contract SFT is Ownable, ERC3525 {
     uint public _tokenID = 1;
     uint public _tokenPrice = 10;
     uint public _slot = 0;
-    uint public _tokenValue = 1;
+    uint private _tokenValue = 1;
 
     // it is simple metadata
     string public constant tokenUri =
         "https://ipfs.filebase.io/ipfs/QmdC8CMNnD36DT4uhrR3c2rohHpMGdiSqZeiJngs23MYtH";
 
     /* Type declarations */
-    mapping(address => uint) public userAddressToSftId;
-    mapping(uint => uint) public userSftPrice;
+    mapping(address => uint) private userAddressToSftId;
+    mapping(uint => uint) private userSftPrice;
 
     /* Events */
     event SetNewTokenPriceByOwenr(address owner, uint newSftPrice);
@@ -54,12 +54,12 @@ contract SFT is Ownable, ERC3525 {
         emit SftMintByUser(msg.sender, getTokenId(), _tokenValue, msg.value);
     }
 
-    function storeUserAddress() public {
+    function storeUserAddress() private {
         uint userId = getTokenId();
         userAddressToSftId[msg.sender] = userId; // make it another function for clean code
     }
 
-    function idGenerator() public {
+    function idGenerator() private {
         _tokenID++;
     }
 
@@ -70,7 +70,7 @@ contract SFT is Ownable, ERC3525 {
     }
 
     // make a require on it
-    function sftIdValidation(uint userTokenId) public pure returns (bool) {
+    function sftIdValidation(uint userTokenId) private pure returns (bool) {
         if (userTokenId != 0) {
             return true;
         } else {
@@ -78,7 +78,7 @@ contract SFT is Ownable, ERC3525 {
         }
     }
 
-    function setSftPriceByHolder(uint _tokenId, uint newPrice) public {
+    function setSftPriceByHolder(uint _tokenId, uint newPrice) external {
         uint tokenId = ERC3525.balanceOf(msg.sender);
         if (tokenId != _tokenId) revert SFT__CallerIsNotTheOwner();
 
@@ -86,13 +86,13 @@ contract SFT is Ownable, ERC3525 {
         emit SftNewPriceByHolder(msg.sender, newPrice, _tokenId);
     }
 
-    function updateSftPriceByHolder(uint _tokenId, uint newPrice) public {
+    function updateSftPriceByHolder(uint _tokenId, uint newPrice) private {
         userSftPrice[_tokenId] = newPrice;
     }
 
     /* getter functions */
     // getSftIdByUserAddress
-    function getUserSftId(address userAddress) public view returns (uint tokenId) {
+    function getUserSftId(address userAddress) private view returns (uint tokenId) {
         return userAddressToSftId[userAddress];
     }
 
@@ -100,7 +100,7 @@ contract SFT is Ownable, ERC3525 {
         return _tokenID;
     }
 
-    function getHolderSftPrice(uint _tokenId) public view returns (uint) {
+    function getHolderSftPrice(uint _tokenId) external view returns (uint) {
         return userSftPrice[_tokenId];
     }
 
