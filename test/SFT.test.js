@@ -163,7 +163,7 @@ describe("SFT Contract", () => {
             await contract.connect(user2).mint({ value: currentValue })
 
             const expectedUserSftId = 1
-            const userSFTId = await contract.getUserSftId(user2.address)
+            const userSFTId = await contract.getSftIdByUserAddress(user2.address)
 
             expect(userSFTId).to.equal(expectedUserSftId)
         })

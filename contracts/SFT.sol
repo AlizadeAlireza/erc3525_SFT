@@ -64,7 +64,7 @@ contract SFT is Ownable, ERC3525 {
     }
 
     function userSftChecker(address userAddress) public view returns (bool) {
-        uint userTokenId = getUserSftId(userAddress);
+        uint userTokenId = getSftIdByUserAddress(userAddress);
 
         return sftIdValidation(userTokenId);
     }
@@ -92,7 +92,7 @@ contract SFT is Ownable, ERC3525 {
 
     /* getter functions */
     // getSftIdByUserAddress
-    function getUserSftId(address userAddress) public view returns (uint tokenId) {
+    function getSftIdByUserAddress(address userAddress) public view returns (uint tokenId) {
         return userAddressToSftId[userAddress];
     }
 
