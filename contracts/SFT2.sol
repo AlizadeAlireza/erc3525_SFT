@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@solvprotocol/erc-3525/ERC3525.sol";
 
-contract SFT is Ownable, ERC3525 {
+contract SFT2 is Ownable, ERC3525 {
     using Strings for uint256;
 
     /* Errors */
