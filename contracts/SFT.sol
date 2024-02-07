@@ -12,6 +12,7 @@ contract SFT is Ownable, ERC3525 {
     using Strings for uint256;
 
     /* Errors */
+    error SFT__YouAlreadyHaveSFT();
 
     /* State variables */
 
@@ -45,7 +46,8 @@ contract SFT is Ownable, ERC3525 {
     }
 
     function mint() public payable {
-        require(!userSftChecker(msg.sender), "You already have a SFT");
+        // require(!userSftChecker(msg.sender), "You already have a SFT");
+        if (userSftChecker(msg.sender)) revert SFT__YouAlreadyHaveSFT();
         require(msg.value == _tokenPrice, "Incorrect value sent for minting");
         ERC3525._mint(msg.sender, _slot, _tokenValue);
         storeUserAddress();
