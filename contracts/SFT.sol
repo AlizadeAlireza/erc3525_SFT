@@ -15,28 +15,27 @@ contract SFT is Ownable, ERC3525 {
 
     /* State variables */
 
-    /* Type declarations */
-
-    /* Events */
-
-    /* main functions */
-
-    /* getter functions */
-    // it is simple metadata
-    string public constant tokenUri =
-        "https://ipfs.filebase.io/ipfs/QmdC8CMNnD36DT4uhrR3c2rohHpMGdiSqZeiJngs23MYtH";
-
-    mapping(address => uint) public userAddressToSftId;
-    mapping(uint => uint) public userSftPrice;
-
     uint public _tokenID = 1;
     uint public _tokenPrice = 10;
     uint public _slot = 0;
     uint public _tokenValue = 1;
 
+    // it is simple metadata
+    string public constant tokenUri =
+        "https://ipfs.filebase.io/ipfs/QmdC8CMNnD36DT4uhrR3c2rohHpMGdiSqZeiJngs23MYtH";
+
+    /* Type declarations */
+
+    mapping(address => uint) public userAddressToSftId;
+    mapping(uint => uint) public userSftPrice;
+
+    /* Events */
+
     event SetNewTokenPriceByOwenr(address owner, uint newSftPrice);
     event SftMintByUser(address user, uint tokenId, uint tokenValue, uint currentSftPrice);
     event SftNewPriceByHolder(address sftOwner, uint newOwnedSftPrice, uint tokenId);
+
+    /* main functions */
 
     constructor() Ownable(msg.sender) ERC3525("alireza", "AZK", 18) {}
 
@@ -94,6 +93,8 @@ contract SFT is Ownable, ERC3525 {
     function updateSftPriceByHolder(uint _tokenId, uint newPrice) public {
         userSftPrice[_tokenId] = newPrice;
     }
+
+    /* getter functions */
 
     function getTokenId() public view returns (uint id) {
         return _tokenID;
