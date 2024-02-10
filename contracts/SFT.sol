@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@solvprotocol/erc-3525/ERC3525.sol";
 
 contract SFT is Ownable, ERC3525 {
-    using Strings for uint256;
+    using Strings for uint256; // @audit extra libraries it is extra gas and strings for uint256 it is not important in this smart contract
 
     /* Errors */
     error SFT__YouAlreadyHaveSFT();
@@ -33,7 +33,7 @@ contract SFT is Ownable, ERC3525 {
 
     /* Events */
     event SetNewTokenPriceByOwenr(address owner, uint newSftPrice);
-    event SftMintByUser(address user, uint tokenId, uint tokenValue, uint currentSftPrice);
+    event SftMintByUser(address user, uint tokenId, uint tokenValue, uint currentSftPrice); // @audit why do we need tokenValue?
     event SftNewPriceByHolder(address sftOwner, uint newOwnedSftPrice, uint tokenId);
 
     /* main functions */
@@ -46,17 +46,18 @@ contract SFT is Ownable, ERC3525 {
 
     function setNewTokenPrice(uint _newTokenPrice) public onlyOwner {
         _tokenPrice = _newTokenPrice;
-        emit SetNewTokenPriceByOwenr(_msgSender(), _newTokenPrice);
+        emit SetNewTokenPriceByOwenr(_msgSender(), _newTokenPrice); // @audit write just msg.sender instead of _msgSender()
     }
 
     function mint() public payable {
+        // @audit we set the price of SFT and user doesn`t write msg.value, he/she only accepts it
         if (userSftChecker(msg.sender)) revert SFT__YouAlreadyHaveSFT();
         if (msg.value != _tokenPrice) revert SFT__IncorrectValueSentForMinting();
 
         ERC3525._mint(msg.sender, _slot, _tokenValue);
         storeUserAddress();
         idGenerator();
-        emit SftMintByUser(msg.sender, getTokenId(), _tokenValue, msg.value);
+        emit SftMintByUser(msg.sender, getTokenId(), _tokenValue, msg.value); // @audit write tokenprice instead of msg.value
     }
 
     function storeUserAddress() public {
@@ -84,6 +85,8 @@ contract SFT is Ownable, ERC3525 {
     }
 
     function setSftPriceByHolder(uint _tokenId, uint newPrice) public {
+        // @audit in the future we will have opportunity that holder can change the price of SFT however write
+        // know only admin/creator of smart contract can set the price of SFT and price of SFT is the same for all
         uint tokenId = ERC3525.balanceOf(msg.sender);
         if (tokenId != _tokenId) revert SFT__CallerIsNotTheOwner();
 
@@ -92,6 +95,7 @@ contract SFT is Ownable, ERC3525 {
     }
 
     function updateSftPriceByHolder(uint _tokenId, uint newPrice) public {
+        // @audit onlyHolder can change
         userSftPrice[_tokenId] = newPrice;
     }
 
