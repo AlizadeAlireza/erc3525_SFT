@@ -10,6 +10,7 @@ import "@solvprotocol/erc-3525/ERC3525.sol";
 
 contract SFT is Ownable, ERC3525 {
     using Strings for uint256; // @audit extra libraries it is extra gas and strings for uint256 it is not important in this smart contract
+    // yes i know, but after a while, we need it for URIs
 
     /* Errors */
     error SFT__YouAlreadyHaveSFT();
@@ -34,6 +35,7 @@ contract SFT is Ownable, ERC3525 {
     /* Events */
     event SetNewTokenPriceByOwenr(address owner, uint newSftPrice);
     event SftMintByUser(address user, uint tokenId, uint tokenValue, uint currentSftPrice); // @audit why do we need tokenValue?
+    // maybe we needed them for storing in external databases
     event SftNewPriceByHolder(address sftOwner, uint newOwnedSftPrice, uint tokenId);
 
     /* main functions */
